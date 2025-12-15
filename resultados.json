@@ -1,19 +1,19 @@
 [
   {
     "nombre": "PARTIDO NACIONAL DE HONDURAS",
-    "candidato": "Candidato 1",
+    "candidato": "Candidato Nacional",
     "votos": 1298835,
     "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZmgDywTs7zaDVViK20lLF5sJgAOA_uYmJKg&s"
   },
   {
     "nombre": "PARTIDO LIBERAL DE HONDURAS",
-    "candidato": "Candidato 2",
+    "candidato": "Candidato Liberal",
     "votos": 1256428,
     "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtF-VmeQhQda6QPSpaf66TTGajId1o7S-vuQ&s"
   },
   {
     "nombre": "PARTIDO LIBERTAD Y REFUNDACION",
-    "candidato": "Candidato 3",
+    "candidato": "Candidato Libre",
     "votos": 1123456,
     "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4i1FaKihCywtAkvt8HNgLkUC8OfvYiIM9-Q&s"
   }
