@@ -1,0 +1,28 @@
+function cargarResultados() {
+  fetch("resultados.json")
+    .then(res => res.json())
+    .then(data => {
+      const contenedor = document.getElementById("resultados");
+      contenedor.innerHTML = "";
+
+      const titulo = document.createElement("h2");
+      titulo.textContent = `Resultados ${data.nivel}`;
+      contenedor.appendChild(titulo);
+
+      const fecha = document.createElement("p");
+      fecha.textContent = "Actualizado: " + data.actualizacion;
+      contenedor.appendChild(fecha);
+
+      data.resultados.forEach(p => {
+        const fila = document.createElement("p");
+        fila.innerHTML = `<b>${p.partido}</b>: ${p.votos.toLocaleString()} votos`;
+        contenedor.appendChild(fila);
+      });
+    })
+    .catch(err => {
+      console.error("Error cargando resultados", err);
+    });
+}
+
+cargarResultados();
+setInterval(cargarResultados, 60000); // cada 1 minuto
