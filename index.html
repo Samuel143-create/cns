@@ -14,7 +14,7 @@
   </style>
 </head>
 <body>
-  <h1>Resultados Electorales</h1>
+  <h1>Resultados Electorales - CNS</h1>
   <table id="tabla-resultados">
     <tr>
       <th>Partido</th>
@@ -27,11 +27,11 @@
   <script>
     async function actualizarResultados() {
       try {
-        const response = await fetch('resultados.json'); // tu archivo JSON
+        const response = await fetch('resultados.json'); // JSON local
         const data = await response.json();
         const tabla = document.getElementById('tabla-resultados');
 
-        // Limpiar tabla menos la cabecera
+        // Limpiar tabla menos cabecera
         tabla.innerHTML = `
           <tr>
             <th>Partido</th>
@@ -41,10 +41,8 @@
           </tr>
         `;
 
-        // Calcular total de votos
         const totalVotos = data.reduce((sum, p) => sum + p.votos, 0);
 
-        // Agregar filas
         data.forEach(partido => {
           const porcentaje = ((partido.votos / totalVotos) * 100).toFixed(2);
           const fila = document.createElement('tr');
@@ -61,9 +59,8 @@
       }
     }
 
-    // Cargar al inicio y actualizar cada 30 segundos
     actualizarResultados();
-    setInterval(actualizarResultados, 30000);
+    setInterval(actualizarResultados, 30000); // cada 30 segundos
   </script>
 </body>
 </html>
