@@ -10,12 +10,12 @@
     table { width: 100%; border-collapse: collapse; margin-top: 20px; }
     th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
     th { background: #007bff; color: white; }
-    img { vertical-align: middle; width: 50px; height: 50px; }
+    img { vertical-align: middle; width: 50px; height: 50px; border-radius: 8px; }
   </style>
 </head>
 <body>
   <h1>Resultados Electorales</h1>
-  <table id="tabla-votos">
+  <table id="tabla-resultados">
     <tr>
       <th>Partido</th>
       <th>Candidato</th>
@@ -25,12 +25,13 @@
   </table>
 
   <script>
-    async function cargarResultados() {
+    async function actualizarResultados() {
       try {
-        const respuesta = await fetch('resultados.json'); // tu archivo JSON con los resultados
-        const datos = await respuesta.json();
+        const response = await fetch('resultados.json'); // tu archivo JSON
+        const data = await response.json();
+        const tabla = document.getElementById('tabla-resultados');
 
-        const tabla = document.getElementById('tabla-votos');
+        // Limpiar tabla menos la cabecera
         tabla.innerHTML = `
           <tr>
             <th>Partido</th>
@@ -40,13 +41,18 @@
           </tr>
         `;
 
-        datos.forEach(partido => {
+        // Calcular total de votos
+        const totalVotos = data.reduce((sum, p) => sum + p.votos, 0);
+
+        // Agregar filas
+        data.forEach(partido => {
+          const porcentaje = ((partido.votos / totalVotos) * 100).toFixed(2);
           const fila = document.createElement('tr');
           fila.innerHTML = `
             <td>${partido.nombre}</td>
             <td><img src="${partido.imagen}" alt="${partido.nombre}"> ${partido.candidato}</td>
             <td>${partido.votos.toLocaleString()}</td>
-            <td>${partido.porcentaje}%</td>
+            <td>${porcentaje}%</td>
           `;
           tabla.appendChild(fila);
         });
@@ -56,8 +62,8 @@
     }
 
     // Cargar al inicio y actualizar cada 30 segundos
-    cargarResultados();
-    setInterval(cargarResultados, 30000);
+    actualizarResultados();
+    setInterval(actualizarResultados, 30000);
   </script>
 </body>
 </html>
