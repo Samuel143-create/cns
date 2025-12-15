@@ -1,28 +1,23 @@
-function cargarResultados() {
-  fetch("resultados.json")
-    .then(res => res.json())
-    .then(data => {
-      const contenedor = document.getElementById("resultados");
-      contenedor.innerHTML = "";
-
-      const titulo = document.createElement("h2");
-      titulo.textContent = `Resultados ${data.nivel}`;
-      contenedor.appendChild(titulo);
-
-      const fecha = document.createElement("p");
-      fecha.textContent = "Actualizado: " + data.actualizacion;
-      contenedor.appendChild(fecha);
-
-      data.resultados.forEach(p => {
-        const fila = document.createElement("p");
-        fila.innerHTML = `<b>${p.partido}</b>: ${p.votos.toLocaleString()} votos`;
-        contenedor.appendChild(fila);
-      });
-    })
-    .catch(err => {
-      console.error("Error cargando resultados", err);
-    });
-}
-
-cargarResultados();
-setInterval(cargarResultados, 60000); // cada 1 minuto
+[
+  {
+    "nombre": "PARTIDO NACIONAL DE HONDURAS",
+    "candidato": "NASRY JUAN ASFURA ZABLAH",
+    "votos": 1298835,
+    "porcentaje": 38.28,
+    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZmgDywTs7zaDVViK20lLF5sJgAOA_uYmJKg&s"
+  },
+  {
+    "nombre": "PARTIDO LIBERAL DE HONDURAS",
+    "candidato": "SALVADOR ALEJANDRO CESAR NASRALLA SALUM",
+    "votos": 1256428,
+    "porcentaje": 37.03,
+    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtF-VmeQhQda6QPSpaf66TTGajId1o7S-vuQ&s"
+  },
+  {
+    "nombre": "PARTIDO LIBERTAD Y REFUNDACION",
+    "candidato": "Xiomara Castro de Zelaya",
+    "votos": 859432,
+    "porcentaje": 24.5,
+    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4i1FaKihCywtAkvt8HNgLkUC8OfvYiIM9-Q&s"
+  }
+]
