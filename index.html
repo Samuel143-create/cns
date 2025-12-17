@@ -1,167 +1,149 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CNS – Resultados Electorales</title>
-
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f2f2f2;
-  margin: 0;
-  padding: 20px;
-}
-h1 {
-  text-align: center;
-  color: #003366;
-}
-.card {
-  background: white;
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 14px;
-  max-width: 900px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
-th, td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-th {
-  background: #003366;
-  color: white;
-}
-.progress {
-  background: #e0e0e0;
-  border-radius: 10px;
-  overflow: hidden;
-  height: 12px;
-}
-.bar {
-  height: 12px;
-  background: #003366;
-}
-.small {
-  font-size: 12px;
-  color: gray;
-}
-td img {
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
-  border-radius: 6px;
-  margin-right: 8px;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>CNS – Resultados Electorales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
 <h1>Consejo Nacional Samuel (CNS)</h1>
 
-<!-- RESULTADOS PRESIDENCIALES -->
 <div class="card">
-  <h2>Resultados Presidenciales</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Partido</th>
-        <th>Candidato</th>
-        <th>Votos</th>
-        <th>%</th>
-      </tr>
-    </thead>
-    <tbody id="tablaResultados"></tbody>
+
+  <p class="total">
+    <strong>Total de votos válidos:</strong>
+    <span id="total-votos">Cargando…</span>
+  </p>
+
+  <div id="sello" class="sello preliminar">
+    RESULTADOS PRELIMINARES
+  </div>
+
+  <table id="tabla-resultados">
+    <tr>
+      <th>Partido</th>
+      <th>Candidato</th>
+      <th>Votos</th>
+      <th>Porcentaje</th>
+    </tr>
+
+    <tr data-votos="1298835">
+      <td><img src="" width="30"> PARTIDO NACIONAL</td>
+      <td>NASRY JUAN ASFURA</td>
+      <td>1,298,835</td>
+      <td class="grafica"><div class="barra"><span></span></div></td>
+    </tr>
+
+    <tr data-votos="1256428">
+      <td><img src="" width="30"> PARTIDO LIBERAL</td>
+      <td>SALVADOR NASRALLA</td>
+      <td>1,256,428</td>
+      <td class="grafica"><div class="barra"><span></span></div></td>
+    </tr>
+
+    <tr data-votos="618448">
+      <td><img src="" width="30"> LIBRE</td>
+      <td>RIXI MONCADA</td>
+      <td>618,448</td>
+      <td class="grafica"><div class="barra"><span></span></div></td>
+    </tr>
+
+    <tr data-votos="25421">
+      <td><img src="" width="30"> PINU</td>
+      <td>JORGE ÁVILA</td>
+      <td>25,421</td>
+      <td class="grafica"><div class="barra"><span></span></div></td>
+    </tr>
+
+    <tr data-votos="5516">
+      <td><img src="" width="30"> DC</td>
+      <td>MARIO RIVERA</td>
+      <td>5,516</td>
+      <td class="grafica"><div class="barra"><span></span></div></td>
+    </tr>
   </table>
 </div>
 
-<!-- ESTADÍSTICAS DE ACTAS -->
+<!-- ===== GRÁFICA CIRCULAR ===== -->
 <div class="card">
-  <h2>Estadísticas de Actas</h2>
-  <p>Total: <strong id="actasTotal"></strong></p>
-  <p>Correctas: <strong id="actasCorrectas"></strong></p>
-  <p>Inconsistentes: <strong id="actasInconsistentes"></strong></p>
+  <h2>Distribución de Votos</h2>
+  <canvas id="graficaCircular" width="300" height="300"></canvas>
 </div>
 
-<!-- LIVE CNE -->
+<!-- ===== LIVE ===== -->
 <div class="card">
   <h2>Live CNE – Escrutinio Especial</h2>
   <iframe
-    width="100%"
-    height="360"
     src="https://www.youtube.com/embed/SyFtDMkX8Zg"
-    frameborder="0"
     allowfullscreen>
   </iframe>
 </div>
 
-<!-- ESTADO FINAL -->
-<div class="card">
-  <p id="estado">Última actualización: 2025-03-16 16:00</p>
-  <p class="small">
-    Actualización automática cada 5 minutos.<br>
-    Datos transcritos manualmente desde el sitio oficial del CNE.
-  </p>
+<!-- ===== FOOTER ===== -->
+<div class="card footer">
+  <p><strong>Última actualización:</strong> 2025-03-16 16:00</p>
+  <p>Actualización automática cada 5 minutos.</p>
+  <p>Datos transcritos manualmente desde el sitio oficial del CNE.</p>
 </div>
 
 <script>
-async function actualizar() {
-  try {
-    const res = await fetch("resultados.json?_=" + Date.now());
-    if (!res.ok) throw new Error("No se pudo cargar resultados.json");
+  let filas = Array.from(document.querySelectorAll('#tabla-resultados tr[data-votos]'));
 
-    const data = await res.json();
+  // ordenar por votos
+  filas.sort((a, b) => b.dataset.votos - a.dataset.votos);
+  filas.forEach(f => f.parentNode.appendChild(f));
 
-    // Actas
-    document.getElementById("actasTotal").innerText = data.actas.total;
-    document.getElementById("actasCorrectas").innerText = data.actas.correctas;
-    document.getElementById("actasInconsistentes").innerText = data.actas.inconsistentes;
+  let total = 0;
+  let max = 0;
+  let ganador = null;
 
-    // Tabla resultados
-    const tbody = document.getElementById("tablaResultados");
-    tbody.innerHTML = "";
+  filas.forEach(fila => {
+    const votos = parseInt(fila.dataset.votos);
+    total += votos;
+    if (votos > max) {
+      max = votos;
+      ganador = fila;
+    }
+  });
 
-    const totalVotos = data.partidos.reduce((s, p) => s + p.votos, 0);
+  document.getElementById('total-votos').textContent = total.toLocaleString();
+  if (ganador) ganador.classList.add('ganador');
 
-    data.partidos.forEach(p => {
-      const porcentaje = ((p.votos / totalVotos) * 100).toFixed(2);
+  filas.forEach(fila => {
+    const votos = parseInt(fila.dataset.votos);
+    const porcentaje = ((votos / total) * 100).toFixed(2);
+    const span = fila.querySelector('.barra span');
+    span.style.width = porcentaje + '%';
+    span.textContent = porcentaje + '%';
+  });
 
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td><img src="" alt="">${p.nombre}</td>
-        <td>${p.candidato}</td>
-        <td>${p.votos.toLocaleString()}</td>
-        <td>
-          ${porcentaje}%
-          <div class="progress">
-            <div class="bar" style="width:${porcentaje}%"></div>
-          </div>
-        </td>
-      `;
-      tbody.appendChild(tr);
-    });
+  // ===== GRÁFICA CIRCULAR =====
+  const canvas = document.getElementById('graficaCircular');
+  const ctx = canvas.getContext('2d');
+  const colores = ['#003366','#0066cc','#cc0000','#ff9900','#666'];
+  let inicio = 0;
 
-    // Estado
-    document.getElementById("estado").innerText =
-      "Última actualización: " + data.ultimaActualizacion;
+  filas.forEach((fila, i) => {
+    const votos = parseInt(fila.dataset.votos);
+    const angulo = (votos / total) * Math.PI * 2;
 
-  } catch (e) {
-    document.getElementById("estado").innerText =
-      "Error al cargar datos: " + e.message;
+    ctx.beginPath();
+    ctx.moveTo(150,150);
+    ctx.arc(150,150,140,inicio,inicio+angulo);
+    ctx.fillStyle = colores[i % colores.length];
+    ctx.fill();
+
+    inicio += angulo;
+  });
+
+  // ===== MODO OSCURO AUTOMÁTICO =====
+  const hora = new Date().getHours();
+  if (hora >= 18 || hora < 6) {
+    document.body.classList.add('oscuro');
   }
-}
-
-// Carga inicial
-actualizar();
-
-// Auto-actualización cada 5 minutos
-setInterval(actualizar, 300000);
 </script>
 
 </body>
