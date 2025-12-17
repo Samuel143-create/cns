@@ -51,6 +51,13 @@ th {
   font-size: 12px;
   color: gray;
 }
+td img {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  border-radius: 6px;
+  margin-right: 8px;
+}
 </style>
 </head>
 
@@ -58,24 +65,7 @@ th {
 
 <h1>Consejo Nacional Samuel (CNS)</h1>
 
-<!-- ESTADO -->
-<div class="card">
-  <p id="estado">Cargando datos...</p>
-  <p class="small">
-    Actualización automática cada 5 minutos.<br>
-    Datos transcritos manualmente desde el sitio oficial del CNE.
-  </p>
-</div>
-
-<!-- ACTAS -->
-<div class="card">
-  <h2>Estadísticas de Actas</h2>
-  <p>Total: <strong id="actasTotal"></strong></p>
-  <p>Correctas: <strong id="actasCorrectas"></strong></p>
-  <p>Inconsistentes: <strong id="actasInconsistentes"></strong></p>
-</div>
-
-<!-- RESULTADOS -->
+<!-- RESULTADOS PRESIDENCIALES -->
 <div class="card">
   <h2>Resultados Presidenciales</h2>
   <table>
@@ -91,7 +81,15 @@ th {
   </table>
 </div>
 
-<!-- LIVE -->
+<!-- ESTADÍSTICAS DE ACTAS -->
+<div class="card">
+  <h2>Estadísticas de Actas</h2>
+  <p>Total: <strong id="actasTotal"></strong></p>
+  <p>Correctas: <strong id="actasCorrectas"></strong></p>
+  <p>Inconsistentes: <strong id="actasInconsistentes"></strong></p>
+</div>
+
+<!-- LIVE CNE -->
 <div class="card">
   <h2>Live CNE – Escrutinio Especial</h2>
   <iframe
@@ -103,6 +101,15 @@ th {
   </iframe>
 </div>
 
+<!-- ESTADO FINAL -->
+<div class="card">
+  <p id="estado">Última actualización: 2025-03-16 16:00</p>
+  <p class="small">
+    Actualización automática cada 5 minutos.<br>
+    Datos transcritos manualmente desde el sitio oficial del CNE.
+  </p>
+</div>
+
 <script>
 async function actualizar() {
   try {
@@ -110,10 +117,6 @@ async function actualizar() {
     if (!res.ok) throw new Error("No se pudo cargar resultados.json");
 
     const data = await res.json();
-
-    // Estado
-    document.getElementById("estado").innerText =
-      "Última actualización: " + data.ultimaActualizacion;
 
     // Actas
     document.getElementById("actasTotal").innerText = data.actas.total;
@@ -131,7 +134,7 @@ async function actualizar() {
 
       const tr = document.createElement("tr");
       tr.innerHTML = `
-        <td>${p.nombre}</td>
+        <td><img src="" alt="">${p.nombre}</td>
         <td>${p.candidato}</td>
         <td>${p.votos.toLocaleString()}</td>
         <td>
@@ -143,6 +146,10 @@ async function actualizar() {
       `;
       tbody.appendChild(tr);
     });
+
+    // Estado
+    document.getElementById("estado").innerText =
+      "Última actualización: " + data.ultimaActualizacion;
 
   } catch (e) {
     document.getElementById("estado").innerText =
