@@ -1,17 +1,20 @@
 {
-  "actualizacion": "16 de diciembre de 2025",
-  "resultados": [
-    {"partido":"PARTIDO NACIONAL DE HONDURAS","candidato":"NASRY JUAN ASFURA ZABLAH","votos":1298835,"porcentaje":38.28},
-    {"partido":"PARTIDO LIBERAL DE HONDURAS","candidato":"SALVADOR ALEJANDRO CESAR NASRALLA SALUM","votos":1256428,"porcentaje":37.03},
-    {"partido":"PARTIDO LIBERTAD Y REFUNDACION","candidato":"RIXI RAMONA MONCADA GODOY","votos":618448,"porcentaje":18.23},
-    {"partido":"PARTIDO INNOVACION Y UNIDAD SOCIAL DEMOCRATA","candidato":"JORGE NELSON AVILA GUTIERREZ","votos":25421,"porcentaje":0.75},
-    {"partido":"PARTIDO DEMOCRATA CRISTIANO DE HONDURAS","candidato":"MARIO ENRIQUE RIVERA CALLEJAS","votos":5516,"porcentaje":0.16}
-  ],
+  "ultimaActualizacion": "2025-03-16 15:00",
   "actas": {
-    "total":19167,
-    "correctas":16337,
-    "inconsistentes":2792,
-    "pendientes":3
+    "total": 19167,
+    "correctas": 16337,
+    "inconsistentes": 2792
   },
-  "live": "https://www.youtube.com/embed/URL_DEL_LIVE"
+  "partidos": [
+    {
+      "nombre": "PARTIDO NACIONAL",
+      "candidato": "NASRY JUAN ASFURA",
+      "votos": 1298835
+    },
+    {
+      "nombre": "PARTIDO LIBERAL",
+      "candidato": "SALVADOR NASRALLA",
+      "votos": 1256428
+    }
+  ]
 }
