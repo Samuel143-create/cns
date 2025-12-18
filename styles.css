@@ -150,3 +150,67 @@ body.oscuro th {
 body.oscuro .barra {
   background: #444;
 }
+
+/* Botón flotante */
+#chatbot-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2563eb;
+  color: white;
+  font-size: 24px;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* Ventana */
+#chatbot {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  height: 420px;
+  background: #020617;
+  border-radius: 12px;
+  display: none;
+  flex-direction: column;
+  z-index: 999;
+}
+
+/* Header */
+.chat-header {
+  background: #2563eb;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Mensajes */
+#chat-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+/* Input */
+.chat-input {
+  display: flex;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+}
+
+.chat-input button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
