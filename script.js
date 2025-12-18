@@ -15,12 +15,12 @@ async function enviar() {
   mensajes.innerHTML += `<div id="pensando">🤖 Pensando...</div>`;
 
   try {
-    const res = await fetch("https://TU-BACKEND.onrender.com/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: texto })
-    });
-
+    const res = await fetch("https://cns-chatbot-backend.onrender.com/chat", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ message: texto })
+});
+    
     const data = await res.json();
     document.getElementById("pensando").remove();
     mensajes.innerHTML += `<div><b>Asistente:</b> ${data.reply}</div>`;
