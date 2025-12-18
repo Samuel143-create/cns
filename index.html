@@ -145,6 +145,24 @@
     document.body.classList.add('oscuro');
   }
 </script>
+  
+<!-- Botón chatbot -->
+<div id="chatbot-btn" onclick="toggleChat()">🤖</div>
+
+<!-- Ventana chatbot -->
+<div id="chatbot">
+  <div class="chat-header">
+    Asistente CNS
+    <span onclick="toggleChat()">✖</span>
+  </div>
+
+  <div id="chat-messages"></div>
+
+  <div class="chat-input">
+    <input id="chat-input" placeholder="Escribe tu pregunta..." />
+    <button onclick="enviar()">Enviar</button>
+  </div>
+</div>
 
 </body>
 </html>
