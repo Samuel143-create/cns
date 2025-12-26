@@ -1,0 +1,107 @@
+{
+  "presidencial": {
+    "participacion": "68.50%",
+    "resultados": [
+      {
+        "partido": "Partido Liberal",
+        "candidato": "Ana María Rodríguez",
+        "votos": 1850420,
+        "porcentaje": "42.15"
+      },
+      {
+        "partido": "Partido Nacional",
+        "candidato": "Carlos Eduardo Martínez",
+        "votos": 1456380,
+        "porcentaje": "33.18"
+      },
+      {
+        "partido": "Libre",
+        "candidato": "Jorge Luis Hernández",
+        "votos": 687250,
+        "porcentaje": "15.65"
+      },
+      {
+        "partido": "PAC",
+        "candidato": "María Elena Torres",
+        "votos": 298670,
+        "porcentaje": "6.80"
+      },
+      {
+        "partido": "PINU",
+        "candidato": "Roberto Sánchez",
+        "votos": 97580,
+        "porcentaje": "2.22"
+      }
+    ]
+  },
+  "alcaldias": {
+    "participacion": "65.20%",
+    "resultados": [
+      {
+        "partido": "Partido Nacional",
+        "candidato": "José Antonio López (Tegucigalpa)",
+        "votos": 456780,
+        "porcentaje": "38.50"
+      },
+      {
+        "partido": "Partido Liberal",
+        "candidato": "Sandra Patricia Mejía (San Pedro Sula)",
+        "votos": 398540,
+        "porcentaje": "33.60"
+      },
+      {
+        "partido": "Libre",
+        "candidato": "Manuel Alejandro Castro",
+        "votos": 189670,
+        "porcentaje": "16.00"
+      },
+      {
+        "partido": "PAC",
+        "candidato": "Luisa Fernanda Gómez",
+        "votos": 94835,
+        "porcentaje": "8.00"
+      },
+      {
+        "partido": "PINU",
+        "candidato": "Pedro Antonio Reyes",
+        "votos": 45918,
+        "porcentaje": "3.90"
+      }
+    ]
+  },
+  "diputados": {
+    "participacion": "67.80%",
+    "resultados": [
+      {
+        "partido": "Partido Liberal",
+        "candidato": "Lista Completa",
+        "votos": 1678950,
+        "porcentaje": "40.25"
+      },
+      {
+        "partido": "Partido Nacional",
+        "candidato": "Lista Completa",
+        "votos": 1389420,
+        "porcentaje": "33.32"
+      },
+      {
+        "partido": "Libre",
+        "candidato": "Lista Completa",
+        "votos": 706850,
+        "porcentaje": "16.95"
+      },
+      {
+        "partido": "PAC",
+        "candidato": "Lista Completa",
+        "votos": 289760,
+        "porcentaje": "6.95"
+      },
+      {
+        "partido": "PINU",
+        "candidato": "Lista Completa",
+        "votos": 106020,
+        "porcentaje": "2.54"
+      }
+    ]
+  }
+}
