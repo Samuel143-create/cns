@@ -1,170 +1,184 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>CNS – Resultados Electorales</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-</head>
+¡Perfecto! Te voy a mostrar el contenido de cada archivo para que lo copies. Crea estos archivos en tu computadora:
 
-<body>
+---
 
-<h1>Consejo Nacional Samuel (CNS)</h1>
-
-<div class="card">
-
-  <p class="total">
-    <strong>Total de votos válidos:</strong>
-    <span id="total-votos">Cargando…</span>
-  </p>
-
-  <div id="sello" class="sello preliminar">
-    RESULTADOS PRELIMINARES
-  </div>
-
-  <table id="tabla-resultados">
-    <tr>
-      <th>Partido</th>
-      <th>Candidato</th>
-      <th>Votos</th>
-      <th>Porcentaje</th>
-    </tr>
-
-    <tr data-votos="1480195">
-      <td><img src="https://elecciones-hnd-publicacion-prod-us-east-1.s3.us-east-1.amazonaws.com/Logos/Candidatos/000_0005.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIATNSYFO5EYDYMH46K%2F20251224%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251224T180401Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=199ee6b7087106cdc400cb82e78576bd6897cbe73ac7ff84b74affa25269fc9f" width="30"> PARTIDO NACIONAL</td>
-      <td>NASRY JUAN ASFURA</td>
-      <td>1,480,195</td>
-      <td class="grafica"><div class="barra"><span></span></div></td>
-    </tr>
-
-    <tr data-votos="1453090">
-      <td><img src="https://elecciones-hnd-publicacion-prod-us-east-1.s3.us-east-1.amazonaws.com/Logos/Candidatos/000_0004.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIATNSYFO5EYDYMH46K%2F20251224%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251224T180401Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=a4895224e0393326e7cc0eb120bea1cd507a0311bee09bf83e2e2c1a36324ce7" width="30"> PARTIDO LIBERAL</td>
-      <td>SALVADOR NASRALLA</td>
-      <td>1,453,090</td>
-      <td class="grafica"><div class="barra"><span></span></div></td>
-    </tr>
-
-    <tr data-votos="705572">
-      <td><img src="https://elecciones-hnd-publicacion-prod-us-east-1.s3.us-east-1.amazonaws.com/Logos/Candidatos/000_0002.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIATNSYFO5EYDYMH46K%2F20251224%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251224T180401Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=ea46ceda0020cfc98efb9d435194ae7ab28f64b20d20e10767e6d7db0d3ec21b" width="30"> LIBRE</td>
-      <td>RIXI MONCADA</td>
-      <td>705,572</td>
-      <td class="grafica"><div class="barra"><span></span></div></td>
-    </tr>
-
-    <tr data-votos="29988">
-      <td><img src="https://elecciones-hnd-publicacion-prod-us-east-1.s3.us-east-1.amazonaws.com/Logos/Candidatos/000_0003.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIATNSYFO5EYDYMH46K%2F20251224%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251224T180401Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=cde8765824403d3df2df5e664f3364e6c1727739d0abab16cf47fb363bf8c37e" width="30"> PINU</td>
-      <td>JORGE ÁVILA</td>
-      <td>29,988</td>
-      <td class="grafica"><div class="barra"><span></span></div></td>
-    </tr>
-
-    <tr data-votos="6442">
-      <td><img src="https://elecciones-hnd-publicacion-prod-us-east-1.s3.us-east-1.amazonaws.com/Logos/Candidatos/000_0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIATNSYFO5EYDYMH46K%2F20251224%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251224T180401Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=c01017a2a4f73fc69a5854c0570e91a121d0e9d50df48bc499f4b02b1a0ef199" width="30"> DC</td>
-      <td>MARIO RIVERA</td>
-      <td>6,442</td>
-      <td class="grafica"><div class="barra"><span></span></div></td>
-    </tr>
-  </table>
-</div>
-
-<!-- ===== GRÁFICA CIRCULAR ===== -->
-<div class="card">
-  <h2>Distribución de Votos</h2>
-  <canvas id="graficaCircular" width="300" height="300"></canvas>
-</div>
-
-<!-- ===== LIVE ===== -->
-<div class="card">
-  <h2>Live CNE – Escrutinio Especial</h2>
-  <iframe
-    src="https://www.youtube.com/embed/IGFCeC7CR_o"
-    allowfullscreen>
-  </iframe>
-</div>
-
-<!-- ===== FOOTER ===== -->
-<div class="card footer">
-  <p><strong>Última actualización:</strong> 24/12/2025 12:30</p>
-  <p>Actualización automática cada 5 minutos.</p>
-  <p>Datos transcritos manualmente desde el sitio oficial del CNE.</p>
-</div>
-
-<script>
-  let filas = Array.from(document.querySelectorAll('#tabla-resultados tr[data-votos]'));
-
-  // ordenar por votos
-  filas.sort((a, b) => b.dataset.votos - a.dataset.votos);
-  filas.forEach(f => f.parentNode.appendChild(f));
-
-  let total = 0;
-  let max = 0;
-  let ganador = null;
-
-  filas.forEach(fila => {
-    const votos = parseInt(fila.dataset.votos);
-    total += votos;
-    if (votos > max) {
-      max = votos;
-      ganador = fila;
-    }
-  });
-
-  document.getElementById('total-votos').textContent = total.toLocaleString();
-  if (ganador) ganador.classList.add('ganador');
-
-  filas.forEach(fila => {
-    const votos = parseInt(fila.dataset.votos);
-    const porcentaje = ((votos / total) * 100).toFixed(2);
-    const span = fila.querySelector('.barra span');
-    span.style.width = porcentaje + '%';
-    span.textContent = porcentaje + '%';
-  });
-
-  // ===== GRÁFICA CIRCULAR =====
-  const canvas = document.getElementById('graficaCircular');
-  const ctx = canvas.getContext('2d');
-  const colores = ['#003366','#0066cc','#cc0000','#ff9900','#666'];
-  let inicio = 0;
-
-  filas.forEach((fila, i) => {
-    const votos = parseInt(fila.dataset.votos);
-    const angulo = (votos / total) * Math.PI * 2;
-
-    ctx.beginPath();
-    ctx.moveTo(150,150);
-    ctx.arc(150,150,140,inicio,inicio+angulo);
-    ctx.fillStyle = colores[i % colores.length];
-    ctx.fill();
-
-    inicio += angulo;
-  });
-
-  // ===== MODO OSCURO AUTOMÁTICO =====
-  const hora = new Date().getHours();
-  if (hora >= 18 || hora < 6) {
-    document.body.classList.add('oscuro');
-  }
-</script>
-  
-<!-- Botón chatbot -->
-<div id="chatbot-btn" onclick="toggleChat()">🤖</div>
-
-<!-- Ventana chatbot -->
-<div id="chatbot">
-  <div class="chat-header">
-    Asistente CNS
-    <span onclick="toggleChat()">✖</span>
-  </div>
-
-  <div id="chat-messages"></div>
-
-  <div class="chat-input">
-    <input id="chat-input" placeholder="Escribe tu pregunta..." />
-    <button onclick="enviar()">Enviar</button>
-  </div>
-</div>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+## 📄 Archivo 1: `index.html`
+Action: file_editor view /app/electoral_dashboard/index.html
+Observation: /app/electoral_dashboard/index.html:
+1|<!DOCTYPE html>
+2|<html lang="es">
+3|<head>
+4|    <meta charset="UTF-8">
+5|    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+6|    <title>CNS – Consejo Nacional Samuel | Resultados Electorales Honduras 2025</title>
+7|    <link rel="stylesheet" href="style.css">
+8|</head>
+9|<body>
+10|    <!-- Header -->
+11|    <header class="header">
+12|        <div class="container">
+13|            <div class="header-content">
+14|                <div class="header-text">
+15|                    <h1 class="header-title">CNS – Consejo Nacional Samuel</h1>
+16|                    <p class="header-subtitle">Resultados Electorales Honduras 2025</p>
+17|                </div>
+18|                <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Activar modo oscuro">
+19|                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+20|                        <circle cx="12" cy="12" r="5"></circle>
+21|                        <line x1="12" y1="1" x2="12" y2="3"></line>
+22|                        <line x1="12" y1="21" x2="12" y2="23"></line>
+23|                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+24|                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+25|                        <line x1="1" y1="12" x2="3" y2="12"></line>
+26|                        <line x1="21" y1="12" x2="23" y2="12"></line>
+27|                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+28|                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+29|                    </svg>
+30|                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+31|                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+32|                    </svg>
+33|                </button>
+34|            </div>
+35|        </div>
+36|    </header>
+37|
+38|    <!-- Main Content -->
+39|    <main class="main-content">
+40|        <div class="container">
+41|            <!-- Selector de Elección -->
+42|            <section class="election-selector-section">
+43|                <div class="card">
+44|                    <h2 class="section-title">Seleccionar Tipo de Elección</h2>
+45|                    <div class="election-buttons">
+46|                        <button class="election-btn active" data-election="presidencial">
+47|                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+48|                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+49|                                <circle cx="9" cy="7" r="4"></circle>
+50|                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+51|                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+52|                            </svg>
+53|                            Elección Presidencial
+54|                        </button>
+55|                        <button class="election-btn" data-election="alcaldias">
+56|                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+57|                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+58|                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+59|                            </svg>
+60|                            Alcaldías
+61|                        </button>
+62|                        <button class="election-btn" data-election="diputados">
+63|                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+64|                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+65|                                <line x1="3" y1="9" x2="21" y2="9"></line>
+66|                                <line x1="9" y1="21" x2="9" y2="9"></line>
+67|                            </svg>
+68|                            Diputados
+69|                        </button>
+70|                    </div>
+71|                </div>
+72|            </section>
+73|
+74|            <!-- Estadísticas Generales -->
+75|            <section class="stats-section">
+76|                <div class="stats-grid">
+77|                    <div class="stat-card">
+78|                        <div class="stat-icon">
+79|                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+80|                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+81|                                <circle cx="9" cy="7" r="4"></circle>
+82|                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+83|                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+84|                            </svg>
+85|                        </div>
+86|                        <div class="stat-content">
+87|                            <p class="stat-label">Total de Votos</p>
+88|                            <p class="stat-value" id="totalVotos">0</p>
+89|                        </div>
+90|                    </div>
+91|                    <div class="stat-card">
+92|                        <div class="stat-icon">
+93|                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+94|                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+95|                            </svg>
+96|                        </div>
+97|                        <div class="stat-content">
+98|                            <p class="stat-label">Participación</p>
+99|                            <p class="stat-value" id="participacion">0%</p>
+100|                        </div>
+101|                    </div>
+102|                    <div class="stat-card winner-card">
+103|                        <div class="stat-icon">
+104|                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+105|                                <circle cx="12" cy="8" r="7"></circle>
+106|                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+107|                            </svg>
+108|                        </div>
+109|                        <div class="stat-content">
+110|                            <p class="stat-label">Ganador Actual</p>
+111|                            <p class="stat-value winner-name" id="ganadorActual">--</p>
+112|                        </div>
+113|                    </div>
+114|                </div>
+115|            </section>
+116|
+117|            <!-- Gráficas -->
+118|            <section class="charts-section">
+119|                <div class="charts-grid">
+120|                    <!-- Gráfica de Barras -->
+121|                    <div class="card chart-card">
+122|                        <h3 class="chart-title">Resultados por Partido</h3>
+123|                        <div class="chart-container">
+124|                            <canvas id="barChart"></canvas>
+125|                        </div>
+126|                    </div>
+127|
+128|                    <!-- Gráfica Circular -->
+129|                    <div class="card chart-card">
+130|                        <h3 class="chart-title">Distribución de Votos</h3>
+131|                        <div class="chart-container">
+132|                            <canvas id="pieChart"></canvas>
+133|                        </div>
+134|                        <div id="pieLegend" class="pie-legend"></div>
+135|                    </div>
+136|                </div>
+137|            </section>
+138|
+139|            <!-- Tabla de Resultados -->
+140|            <section class="results-section">
+141|                <div class="card">
+142|                    <h3 class="section-title">Resultados Detallados</h3>
+143|                    <div class="table-container">
+144|                        <table class="results-table">
+145|                            <thead>
+146|                                <tr>
+147|                                    <th>Posición</th>
+148|                                    <th>Partido</th>
+149|                                    <th>Candidato</th>
+150|                                    <th>Votos</th>
+151|                                    <th>Porcentaje</th>
+152|                                    <th>Estado</th>
+153|                                </tr>
+154|                            </thead>
+155|                            <tbody id="resultsTableBody">
+156|                                <!-- Datos cargados dinámicamente -->
+157|                            </tbody>
+158|                        </table>
+159|                    </div>
+160|                </div>
+161|            </section>
+162|        </div>
+163|    </main>
+164|
+165|    <!-- Footer -->
+166|    <footer class="footer">
+167|        <div class="container">
+168|            <div class="footer-content">
+169|                <p class="footer-text">Proyecto independiente – CNS</p>
+170|                <p class="footer-text">Datos simulados con fines informativos</p>
+171|            </div>
+172|        </div>
+173|    </footer>
+174|
+175|    <script src="script.js"></script>
+176|</body>
+177|</html>
